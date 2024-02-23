@@ -35,3 +35,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+Console.WriteLine("this is a test for a new line to see if it works");
