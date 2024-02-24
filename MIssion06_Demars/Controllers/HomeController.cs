@@ -29,6 +29,8 @@ namespace MIssion06_Demars.Controllers
         [HttpGet]
         public IActionResult EnterNewMovie()
         {
+            ViewBag.Categories = _context.Categories.ToList(); //put the categories table values in a list stored to a ViewBag
+
             ViewData["Title"] = "Submit New Movie";
             return View();
         }
@@ -40,7 +42,16 @@ namespace MIssion06_Demars.Controllers
             _context.Movies.Add(response); //Add record to the database
             _context.SaveChanges();
             ViewData["Title"] = "Success!";
-            return View("Confirmation");
+            return View("Confirmation", response);
+        }
+
+        public IActionResult MovieList()
+        {
+            //Linq query
+            var movies = _context.Movies
+                .OrderBy(x => x.Title).ToList();
+
+            return View(movies);
         }
     }
 }
