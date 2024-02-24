@@ -1,9 +1,100 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
 @model Movie
+
+<!-- New Movie Form Page -->
+    <h1>Add a New Movie for Joel to watch</h1>
+    <form method="post">
+        <input type="hidden" asp-for="MovieId" />
+
+        <!-- Movie details input fields -->
+        <!-- Movie details input fields -->
+        <label asp-for="Category">Category:</label>
+        <!-- Input field with datalist for autocomplete -->
+        <input asp-for="Category" type="text" name="category" list="categoryList">
+        <datalist id="categoryList">
+            <!-- List of movie categories -->
+            <option value="Miscellaneous">Miscellaneous</option>
+            <option value="Drama">Drama</option>
+            <option value="Television">Television</option>
+            <option value="Horror/Suspense">Horror/Suspense</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Family">Family</option>
+            <option value="Action/Adventure">Action/Adventure</option>
+            <option value="VHS">VHS</option>
+        </datalist>
+        <br />
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" type="text" name="title" required>
+        <br />
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" type="number" name="year" required>
+        <br />
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" type="text" name="director">
+        <br />
+        <!-- Dropdown for Rating -->
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating" name="rating">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+            <option value="NR">NR</option>
+        </select>
+        <br />
+        <!-- Checkbox for Edited -->
+        <label asp-for="Edited" required>Is the Movie Edited?</label>
+        <select asp-for="Edited" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><!-- "true" will be submitted when checked -->
+        <br />
+        <!-- Optional input fields -->
+        <label asp-for="LentTo">Lent To:</label>
+        <input asp-for="LentTo" type="text" name="lent_to">
+        <br />
+        <!-- Checkbox for Edited -->
+        <label asp-for="CopiedToPlex" required>Is the Movie Copied to Plex?</label>
+        <select asp-for="CopiedToPlex" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><!-- "true" will be submitted when checked -->
+        <br />
+        <label asp-for="Notes">Notes (max 25 characters):</label>
+        <input asp-for="Notes" type="text" name="notes" maxlength="25">
+        <br />
+        <!-- Submit button -->
+        <button type="submit">Submit</button>
+
+        <div asp-validation-summary="All"></div>
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* This is round one. It doesn't work and I can't figure out for the life of me why. Keeping this for my own notes to figure it out.
+    
 
 <h1>Enter a New Movie for Joel to watch</h1>
 
@@ -74,4 +165,6 @@
 
     <button type="submit">Submit Movie Suggestion</button>
 
-</form>
+    <div asp-validation-summary="All"></div>
+
+</form> *@

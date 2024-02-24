@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
+﻿
 @model List<Movie> //get the list of movies from the HomeController
 
 <table class="table table-bordered">
@@ -22,22 +17,22 @@
         
     </thead>
 
-    @foreach (var movies in Model) //use razor code to run through the list of movies
+    @foreach (var m in Model) //use razor code to run through the list of movies
     {
         <tbody>
             <tr>
-                <td>@movies.Category?.CategoryName</td>
-                <td>@movies.Title</td>
-                <td>@movies.Year</td>
-                <td>@movies.Director</td>
-                <td>@movies.Rating</td>
-                <td>@movies.Edited</td>
-                <td>@movies.LentTo</td>
-                <td>@movies.CopiedToPlex</td>
-                <td>@movies.Notes</td>
+                <td>@m.Category?.CategoryName</td>
+                <td>@m.Title</td>
+                <td>@m.Year</td>
+                <td>@m.Director</td>
+                <td>@m.Rating</td>
+                <td>@m.Edited</td>
+                <td>@m.LentTo</td>
+                <td>@m.CopiedToPlex</td>
+                <td>@m.Notes</td>
 
-                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@movies.MovieId">Edit</a></td>
-                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@movies.MovieId">Delete</a></td>
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@m.MovieId">Edit</a></td>
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@m.MovieId">Delete</a></td>
             </tr>
             
         </tbody> 
