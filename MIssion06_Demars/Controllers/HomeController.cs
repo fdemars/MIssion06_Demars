@@ -29,6 +29,7 @@ namespace MIssion06_Demars.Controllers
         [HttpGet]
         public IActionResult EnterNewMovie()
         {
+            
             ViewBag.Categories = _context.Categories.ToList(); //put the categories table values in a list stored to a ViewBag
 
             ViewData["Title"] = "Submit New Movie";
@@ -53,5 +54,32 @@ namespace MIssion06_Demars.Controllers
 
             return View(movies);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var recordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            ViewBag.Categories = _context.Categories.ToList(); //put the categories table values in a list stored to a ViewBag
+
+            ViewData["Title"] = "Submit New Movie";
+
+            return View("EnterNewMovie", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Movie updatedInfo)
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("MovieList");
+        }
+
+        //public IActionResult Delete()
+        //{
+
+        //}
     }
 }

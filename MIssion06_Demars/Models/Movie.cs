@@ -10,6 +10,7 @@ namespace MIssion06_Demars.Models
         [Required]
         public int MovieId { get; set; }
 
+        [ForeignKey("Category")]
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
